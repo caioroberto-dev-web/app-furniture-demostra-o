@@ -6,7 +6,7 @@ import LvList from "../components/LvList.vue";
 <template>
   <div>
     <div class="container-search">
-      <FormKit type="search" label="Busca" validation="required" />
+      <FormKit type="search" label="Buscar" validation="required" />
       <button class="btn btn-sm btn-primary d-block mt-3 ms-auto" type="button">Busca</button>
     </div>
     <h1 class="text-center my-5 text-white">Inicial</h1>

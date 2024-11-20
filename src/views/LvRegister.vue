@@ -107,7 +107,7 @@ const handleSubmit = async (field) => {
         />
       </div>
       <div class="col-lg-12">
-        <lv-button :classBtn="'btn-primary'" title="Cadastro"></lv-button>
+        <lv-button :classBtn="'btn-primary'" title="Cadastrar"></lv-button>
       </div>
     </div>
   </FormKit>

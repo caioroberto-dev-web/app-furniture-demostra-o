@@ -106,6 +106,7 @@ const handleSubmit = async (field) => {
         />
       </div>
       <div>
+        <router-link class="btn btn-danger me-3" :to="'/user-panel/'+userStore.user.idUsuario">Cancelar</router-link>
         <lv-button :classBtn="'btn-primary'" :title="'Registrar'"></lv-button>
       </div>
     </div>

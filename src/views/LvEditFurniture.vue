@@ -10,6 +10,9 @@ import LvModalConfirm from "../components/LvModalConfirm.vue";
 //Services
 import { furnitureServices } from "../services/furnitureServices";
 
+//Store
+import { useUserStore } from "../store/useUserStore";
+
 const route = useRoute();
 
 const router = useRouter();
@@ -17,6 +20,8 @@ const router = useRouter();
 const editFurniture = ref();
 
 const $toast = useToast();
+
+const userStore = useUserStore();
 
 onMounted(async () => {
   getFurnitureDetails(route.params.id);
@@ -140,6 +145,11 @@ const handleSubmit = async () => {
           />
         </div>
         <div>
+          <router-link
+            class="btn btn-danger me-3"
+            :to="'/user-panel/' + userStore.user.idUsuario"
+            >Cancelar</router-link
+          >
           <lv-button
             :classBtn="'btn-primary'"
             :title="'Salvar'"

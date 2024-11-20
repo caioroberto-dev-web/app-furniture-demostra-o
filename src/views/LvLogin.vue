@@ -46,7 +46,7 @@ const handleSubmit = async (field) => {
   >
     <h1 class="text-center text-white my-5">Logar</h1>
     <div class="col-lg-6 m-auto container-form">
-      <div class="row col-lg-6 gy-3 w-75 m-auto">
+      <div class="row col-lg-6 gy-3 m-auto">
         <FormKit
           type="email"
           name="email"

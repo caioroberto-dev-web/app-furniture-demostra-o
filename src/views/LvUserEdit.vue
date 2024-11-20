@@ -141,6 +141,7 @@ const handleSubmit = async () => {
             />
           </div>
           <div class="col-lg-12">
+            <router-link class="btn btn-danger me-3" :to="'/user-panel/'+userStore.user.idUsuario">Cancelar</router-link>
             <lv-button
               :classBtn="'btn-primary'"
               title="Salvar"
