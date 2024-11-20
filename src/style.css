@@ -1,0 +1,47 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", serif;
+}
+
+body {
+  background-color: #260801;
+  min-height: 100vh;
+}
+
+/* Formkit messages */
+.formkit-messages {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  color: red;
+  text-align: center;
+}
+
+/* Search */
+.container-search {
+  color: #fefefe;
+  width: 400px;
+  margin: 15px auto;
+}
+
+
+/* Pagination */
+.VuePagination p {
+  color: #fefefe;
+}
+
+.page-link.active {
+  background-color: #260801;
+  border-color: #fefefe;
+}
+
+.page-link:focus {
+  box-shadow: none;
+}
+
+@media (max-width: 576px) {
+  body {
+    min-height: 750px;
+  }
+}

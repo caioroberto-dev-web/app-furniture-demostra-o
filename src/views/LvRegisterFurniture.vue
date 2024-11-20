@@ -1,0 +1,122 @@
+<script setup>
+import { useToast } from "vue-toast-notification";
+import { useRouter } from "vue-router";
+
+//Components
+import LvButton from "../components/LvButton.vue";
+
+//Services
+import { furnitureServices } from "../services/furnitureServices";
+
+//Store
+import { useUserStore } from "../store/useUserStore";
+
+const router = useRouter();
+
+const $toast = useToast();
+
+const userStore = useUserStore();
+
+const handleSubmit = async (field) => {
+  field.image = field.img[0].file;
+  delete field.img;
+
+  const formData = new FormData();
+
+  formData.append("image", field.image);
+
+  for (const [key, value] of Object.entries(field)) {
+    if (key !== "image") {
+      formData.append(key, value);
+    }
+  }
+
+  await furnitureServices
+    .registerFurniture(formData)
+    .then((res) => {
+      $toast.success(res.data.message);
+      router.push("/user-panel/" + userStore.user.idUsuario);
+    })
+    .catch((err) => {
+      $toast.error(err);
+    });
+};
+</script>
+
+<template>
+  <FormKit
+    @submit="handleSubmit"
+    type="form"
+    :actions="false"
+    #default="{ value }"
+  >
+    <h2 class="text-center text-white my-5">Registrar móvel</h2>
+    <div class="row w-75 m-auto gy-3 container-form">
+      <div class="col-lg-6 col-12">
+        <FormKit
+          type="text"
+          name="nomeProduto"
+          label="Nome do produto"
+          validation="required"
+        />
+      </div>
+      <div class="col-lg-6 col-12">
+        <FormKit
+          type="select"
+          label="Selecione as condições"
+          name="condicao"
+          :options="[{ label: '', attrs: { disabled: true } }, 'novo', 'usado']"
+          validation="required"
+        />
+      </div>
+      <div class="col-lg-6 col-12">
+        <FormKit type="text" name="cor" label="Cor" validation="required" />
+      </div>
+      <div class="col-lg-6 col-12">
+        <FormKit
+          type="number"
+          number
+          label="Preço R$"
+          name="preco"
+          validation="required"
+        />
+      </div>
+      <div class="col-lg-6 col-12">
+        <FormKit
+          type="file"
+          name="img"
+          label="Imagem do produto"
+          accept=".png,.jpg,.jpeg"
+          multiple="false"
+          validation="required"
+        />
+      </div>
+      <div class="col-lg-6 col-12">
+        <FormKit
+          type="textarea"
+          name="descricao"
+          label="Descrição"
+          :help="`${
+            value.descricao ? value.descricao.length : 0
+          } / 2000 máximo`"
+          validation="required|length:0,2000"
+          :validation-messages="{
+            length: 'Descrição não pode exceder os 2000 characters.',
+          }"
+        />
+      </div>
+      <div>
+        <lv-button :classBtn="'btn-primary'" :title="'Registrar'"></lv-button>
+      </div>
+    </div>
+  </FormKit>
+</template>
+
+<style scoped>
+.container-form {
+  background-color: #733816;
+  padding: 50px;
+  color: #fefefe;
+  border-radius: 15px;
+}
+</style>
