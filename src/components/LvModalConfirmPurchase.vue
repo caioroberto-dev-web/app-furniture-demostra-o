@@ -42,7 +42,7 @@ defineProps({
         <div class="modal-footer">
           <button
             type="button"
-            class="btn btn-secondary"
+            class="btn btn-danger"
             data-bs-dismiss="modal"
           >
             Cancelar
