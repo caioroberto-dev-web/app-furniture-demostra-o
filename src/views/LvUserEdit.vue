@@ -77,7 +77,7 @@ const handleSubmit = async () => {
         #default="{ value }"
       >
         <h1 class="text-center text-white my-5">Edição</h1>
-        <div class="row gy-3 w-75 m-auto container-form">
+        <div class="row gy-3 m-auto container-form">
           <div class="col-lg-6">
             <FormKit
               type="text"
@@ -141,7 +141,11 @@ const handleSubmit = async () => {
             />
           </div>
           <div class="col-lg-12">
-            <router-link class="btn btn-danger me-3" :to="'/user-panel/'+userStore.user.idUsuario">Cancelar</router-link>
+            <router-link
+              class="btn btn-danger me-3"
+              :to="'/user-panel/' + userStore.user.idUsuario"
+              >Cancelar</router-link
+            >
             <lv-button
               :classBtn="'btn-primary'"
               title="Salvar"
@@ -162,9 +166,16 @@ const handleSubmit = async () => {
 
 <style scoped>
 .container-form {
+  width: 847px;
   background-color: #733816;
   padding: 50px;
   color: #fefefe;
   border-radius: 15px;
+}
+
+@media (max-width: 992px) {
+  .container-form {
+    width: 447px;
+  }
 }
 </style>

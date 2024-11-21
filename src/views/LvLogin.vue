@@ -69,9 +69,16 @@ const handleSubmit = async (field) => {
 
 <style scoped>
 .container-form {
+  width: 847px;
   background-color: #733816;
   padding: 50px;
   color: #fefefe;
   border-radius: 15px;
+}
+
+@media (max-width: 992px) {
+  .container-form {
+    width: 447px;
+  }
 }
 </style>
