@@ -35,12 +35,16 @@ const handleSubmit = async (field) => {
   await userServices
     .userRegister(field)
     .then((res) => {
-      $toast.success(res.data.message);
+      $toast.success(res.data.message, {
+        position: "top",
+      });
       reset("myForm");
       router.push("/login");
     })
     .catch((err) => {
-      $toast.error(err.response.data.message);
+      $toast.error(err.response.data.message, {
+        position: "top",
+      });
     });
 };
 </script>

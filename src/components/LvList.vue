@@ -27,7 +27,7 @@ onMounted(async () => {
       console.log(furniture.value.length);
     })
     .catch((err) => {
-      console.log(err);
+      console.log(err.response.data.message);
     });
 });
 

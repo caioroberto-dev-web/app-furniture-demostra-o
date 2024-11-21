@@ -75,11 +75,15 @@ const completeSale = async () => {
   await furnitureServices
     .completeSaleTheFurniture(idMovel.value)
     .then((res) => {
-      $toast.success(res.data.message);
+      $toast.success(res.data.message, {
+        position: "top",
+      });
       getMyFurtinureById(userStore.user.idUsuario);
     })
     .catch((err) => {
-      $toast.error(err.response.data.message);
+      $toast.error(err.response.data.message, {
+        position: "top",
+      });
     });
 };
 
@@ -87,11 +91,15 @@ const deleteFurtinure = async () => {
   await furnitureServices
     .deleteFurniture(idMovel.value)
     .then((res) => {
-      $toast.success(res.data.message);
+      $toast.success(res.data.message, {
+        position: "top",
+      });
       getMyFurtinureById(userStore.user.idUsuario);
     })
     .catch((err) => {
-      $toast.error(err.response.data.message);
+      $toast.error(err.response.data.message, {
+        position: "top",
+      });
     });
 };
 
@@ -99,11 +107,15 @@ const cancelSale = async () => {
   await furnitureServices
     .cancelSaleTheFurniture(idMovel.value)
     .then((res) => {
-      $toast.success(res.data.message);
+      $toast.success(res.data.message, {
+        position: "top",
+      });
       getMyFurtinureById(userStore.user.idUsuario);
     })
     .catch((err) => {
-      $toast.error(err.response.data.message);
+      $toast.error(err.response.data.message, {
+        position: "top",
+      });
     });
 };
 </script>
@@ -308,6 +320,7 @@ const cancelSale = async () => {
 .purchase-img,
 .myFurniture {
   width: 100px;
+  border-radius: 15px;
   display: block;
   margin: 15px 0;
 }

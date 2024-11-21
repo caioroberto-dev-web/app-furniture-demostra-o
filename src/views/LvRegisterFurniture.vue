@@ -34,11 +34,15 @@ const handleSubmit = async (field) => {
   await furnitureServices
     .registerFurniture(formData)
     .then((res) => {
-      $toast.success(res.data.message);
+      $toast.success(res.data.message, {
+        position: "top",
+      });
       router.push("/user-panel/" + userStore.user.idUsuario);
     })
     .catch((err) => {
-      $toast.error(err);
+      $toast.error(err.response.data.message, {
+        position: "top",
+      });
     });
 };
 </script>

@@ -45,17 +45,23 @@ const iWantBuyFurniture = async () => {
   await furnitureServices
     .iWantToBuyFurtinure(route.params.id, userStore.user.token)
     .then((res) => {
-      $toast.success(res.data.message);
+      $toast.success(res.data.message, {
+        position: "top",
+      });
       getFurnitureDetails(route.params.id);
       furnitureStore.productsInCart();
     })
     .catch((err) => {
-      $toast.error(err.response.data.message);
+      $toast.error(err.response.data.message, {
+        position: "top",
+      });
     });
 };
 
 const isButtonDisabled = () => {
-  $toast.warning("Móvel em negociação!");
+  $toast.warning("Móvel em negociação!", {
+    position: "top",
+  });
 };
 </script>
 
@@ -128,15 +134,15 @@ const isButtonDisabled = () => {
           </router-link>
         </template>
       </div>
-      <hr class="mt-5">
+      <hr class="mt-5" />
       <lv-carousel-furniture-img
         :srcImg="furnitureDetails.image"
         :altImg="furnitureDetails.nomeProduto"
       ></lv-carousel-furniture-img>
-      <hr class="mt-5">
+      <hr class="mt-5" />
       <h3 class="text-center mt-5">Descricão</h3>
       <p class="my-3">{{ furnitureDetails.descricao }}</p>
-      <hr class="mt-5">
+      <hr class="mt-5" />
     </div>
   </div>
 </template>
@@ -153,7 +159,6 @@ const isButtonDisabled = () => {
   color: #fefefe;
   border-radius: 15px;
 }
-
 
 @media (max-width: 992px) {
   .container-img-furniture {

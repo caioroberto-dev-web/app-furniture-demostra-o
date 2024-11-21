@@ -51,12 +51,16 @@ const handleSubmit = async () => {
   await userServices
     .updatedUser(userStore.user.idUsuario, formData)
     .then((res) => {
-      $toast.success(res.data.message);
+      $toast.success(res.data.message, {
+        position: "top",
+      });
       userStore.checaUsuario();
       router.push("/user-panel/" + route.params.id);
     })
     .catch((err) => {
-      $toast.error(err.response.data.message);
+      $toast.error(err.response.data.message, {
+        position: "top",
+      });
     });
 };
 </script>

@@ -24,7 +24,9 @@ const handleSubmit = async (field) => {
   await userServices
     .userLogin(field)
     .then((res) => {
-      $toast.success(res.data.message);
+      $toast.success(res.data.message, {
+        position: "top",
+      });
       userStore.userLogin(field);
       router.push("/");
       setTimeout(() => {
@@ -32,7 +34,9 @@ const handleSubmit = async (field) => {
       }, 1000);
     })
     .catch((err) => {
-      $toast.error(err.response.data.message);
+      $toast.error(err.response.data.message, {
+        position: "top",
+      });
     });
 };
 </script>
