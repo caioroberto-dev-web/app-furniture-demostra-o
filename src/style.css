@@ -25,7 +25,6 @@ body {
   margin: 15px auto;
 }
 
-
 /* Pagination */
 .VuePagination p {
   color: #fefefe;
@@ -44,4 +43,9 @@ body {
   body {
     min-height: 750px;
   }
+}
+
+/* Toast Notification */
+.v-toast__text {
+  color: #fefefe;
 }

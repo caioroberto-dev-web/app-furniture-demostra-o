@@ -275,7 +275,7 @@ const cancelSale = async () => {
             </p>
             <p>Vendedor : {{ item.nomeVendedor }}</p>
             <p v-if="item.nomeComprador !== null">
-              {{ item.nomeComprador }} -
+              Contato -
               <a
                 class="nav-link d-inline-block"
                 :href="

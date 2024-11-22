@@ -71,6 +71,12 @@ defineProps({
   border-radius: 15px;
 }
 
+.carousel-control-prev, .carousel-control-next {
+  height: 75px;
+  margin: auto 15px;
+  background-color: #733816;
+}
+
 @media (max-width: 992px) {
   .container-img-furniture {
     width: 300px;

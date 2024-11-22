@@ -32,7 +32,15 @@ onMounted(async () => {
 });
 
 const isSold = () => {
-  $toast.warning("O produto foi vendido!");
+  $toast.warning("O produto foi vendido!", {
+    position: "top",
+  });
+};
+
+const isNegotiating = () => {
+  $toast.warning("O produto está em negociação!", {
+    position: "top",
+  });
 };
 
 const getPagedItems = (currentPage) => {
@@ -42,7 +50,6 @@ const getPagedItems = (currentPage) => {
 
   return furniture.value.slice(startIndex, endIndex);
 };
-
 </script>
 
 <template>
@@ -65,6 +72,7 @@ const getPagedItems = (currentPage) => {
       </div>
       <lv-router-link
         v-if="item.nomeComprador !== null && item.situacao !== false"
+        @click="isNegotiating"
         :title="'Em negociação'"
         :classBtn="'btn-warning text-white'"
         :to="'/'"
@@ -83,11 +91,7 @@ const getPagedItems = (currentPage) => {
         :to="'/'"
       ></lv-router-link>
     </div>
-    <pagination
-      v-model="page"
-      :records="totalPages"
-      :per-page="10"
-    />
+    <pagination v-model="page" :records="totalPages" :per-page="10" />
   </div>
 </template>
 
@@ -109,5 +113,9 @@ img {
 .card {
   border: 5px solid #260801;
   border-radius: 15px;
+}
+
+.v-toast__text {
+  color: #260801;
 }
 </style>
