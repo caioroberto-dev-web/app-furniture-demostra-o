@@ -113,4 +113,8 @@ const emitCartClick = () => {
   margin-left: 10px;
   border-radius: 100%;
 }
+
+.bi-cart2 {
+  cursor: pointer;
+}
 </style>

@@ -21,7 +21,13 @@ const furnitureStore = useFurnitureStore();
 
 const userStore = useUserStore();
 
+const total = ref(0);
+
 const cartItems = computed(() => {
+  total.value = 0
+  furnitureStore.cart.bag.forEach((item) => {
+    console.log(total.value += parseFloat(item.preco))
+  })
   return furnitureStore.cart.bag;
 });
 
@@ -52,19 +58,22 @@ watch(cartItems, (newValue) => {
         ></button>
       </div>
       <div class="offcanvas-body">
-       <div v-if="bagCart.length <= 0">
+        <div v-if="bagCart.length <= 0">
           <p class="text-center">Nenhum produto adicionado ao carrinho</p>
-       </div>
-       <ul v-else>
-        <li class="nav-item" v-for="item of bagCart" :key="item.id">
-          <router-link
-            class="nav-link"
-            :to="'/user-panel/' + userStore.user.idUsuario"
-          >
-            {{ item.nomeProduto }} - R$ {{ item.preco }}
-          </router-link>
-        </li>
-      </ul>
+        </div>
+        <ul v-else>
+          <li class="nav-item" v-for="item of bagCart" :key="item.id">
+            <router-link
+              class="nav-link"
+              :to="'/user-panel/' + userStore.user.idUsuario"
+            >
+              {{ item.nomeProduto }} - R$ {{ item.preco }}
+            </router-link>
+          </li>
+          <div class="text-end">
+            <p class="fs-5">Total R$ {{ total }}</p>
+          </div>
+        </ul>
       </div>
     </div>
   </div>
