@@ -98,7 +98,7 @@ const getPagedItems = (currentPage) => {
 <style scoped>
 img {
   display: block;
-  width: 90%;
+  aspect-ratio: 4/4;
   margin: auto;
   border-radius: 15px;
 }
