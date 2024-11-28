@@ -42,7 +42,9 @@ const handleSubmit = async () => {
   const formData = new FormData();
 
   if (editFurniture.value.image.length > 0) {
-    formData.append("image", editFurniture.value.image[0].file);
+    editFurniture.value.image.forEach((image) => {
+      formData.append("image", image.file);
+    });
   }
 
   for (const [key, value] of Object.entries(editFurniture.value)) {
@@ -130,7 +132,7 @@ const handleSubmit = async () => {
             v-model="editFurniture.image"
             label="Imagem do produto"
             accept=".png,.jpg,.jpeg"
-            multiple="false"
+            multiple="true"
           />
         </div>
         <div class="col-lg-6 col-12">

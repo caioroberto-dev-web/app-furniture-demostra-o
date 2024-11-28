@@ -1,14 +1,19 @@
 <script setup>
+import { ref } from "vue";
 defineProps({
   srcImg: {
     required: true,
-    srcImg: String,
+    srcImg: Array,
+    default: () => [],
   },
   altImg: {
     required: true,
     altImg: String,
+    default: "",
   },
 });
+
+const activeIndex = ref(0);
 </script>
 
 <template>
@@ -38,10 +43,27 @@ defineProps({
         data-bs-slide-to="2"
         aria-label="Slide 3"
       ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide-to="3"
+        aria-label="Slide 4"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide-to="4"
+        aria-label="Slide 4"
+      ></button>
     </div>
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img :src="srcImg" class="img-carousel img-fluid" :alt="altImg" />
+      <div
+        v-for="(item, index) of srcImg"
+        :key="item.id"
+        :class="{ active: index === activeIndex }"
+        class="carousel-item"
+      >
+        <img :src="item.url" class="img-carousel img-fluid" :alt="item.filename" />
       </div>
     </div>
     <button
@@ -66,12 +88,18 @@ defineProps({
 </template>
 
 <style scoped>
+.img-carousel {
+  height: 576px;
+  margin: auto;
+}
+
 .carousel-indicators {
   background-color: #733816;
   border-radius: 15px;
 }
 
-.carousel-control-prev, .carousel-control-next {
+.carousel-control-prev,
+.carousel-control-next {
   height: 75px;
   margin: auto 15px;
   background-color: #733816;
@@ -84,6 +112,7 @@ defineProps({
   }
 
   .img-carousel {
+    height: 376px;
     width: 576px;
     margin: auto;
   }

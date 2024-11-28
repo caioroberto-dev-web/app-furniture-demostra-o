@@ -161,7 +161,7 @@ const cancelSale = async () => {
             </span>
             <lv-image
               class="myFurniture d-inline"
-              :src="item.image"
+              :src="item.image[0].url"
               :alt="item.nomeProduto"
             />
             situação -
@@ -261,7 +261,7 @@ const cancelSale = async () => {
           >
             <lv-image
               class="purchase-img"
-              :src="item.image"
+              :src="Image[0].url"
               :alt="item.nomeProduto"
             />
             <p>

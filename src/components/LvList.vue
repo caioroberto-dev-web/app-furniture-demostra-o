@@ -24,7 +24,6 @@ onMounted(async () => {
     .then((res) => {
       furniture.value = res.data.moveis;
       totalPages.value = furniture.value.length;
-      console.log(furniture.value.length);
     })
     .catch((err) => {
       console.log(err.response.data.message);
@@ -66,7 +65,7 @@ const getPagedItems = (currentPage) => {
       <div class="card-header text-center bg-transparent border-0">
         <h2 class="fs-6">{{ item.nomeProduto }}</h2>
       </div>
-      <lv-image class="img-fluid" :src="item.image" :alt="item.nomeProduto" />
+      <lv-image class="img-fluid" :src="item.image[0].url" :alt="item.nomeProduto" />
       <div class="card-body">
         <p class="card-text text-center fs-6">R$ {{ item.preco }},00</p>
       </div>

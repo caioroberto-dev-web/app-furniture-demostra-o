@@ -78,7 +78,7 @@ const isButtonDisabled = () => {
       <div class="col-lg-6 container-img-furniture">
         <lv-image
           class="img-furtinure"
-          :src="furnitureDetails.image"
+          :src="furnitureDetails.image[0].url"
           :alt="furnitureDetails.nomeProduto"
         ></lv-image>
       </div>

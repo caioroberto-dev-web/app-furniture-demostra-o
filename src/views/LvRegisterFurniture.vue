@@ -18,12 +18,11 @@ const $toast = useToast();
 const userStore = useUserStore();
 
 const handleSubmit = async (field) => {
-  field.image = field.img[0].file;
-  delete field.img;
-
   const formData = new FormData();
 
-  formData.append("image", field.image);
+  field.image.forEach((image) => {
+    formData.append("image", image.file);
+  });
 
   for (const [key, value] of Object.entries(field)) {
     if (key !== "image") {
@@ -88,10 +87,10 @@ const handleSubmit = async (field) => {
       <div class="col-lg-6 col-12">
         <FormKit
           type="file"
-          name="img"
+          name="image"
           label="Imagem do produto"
           accept=".png,.jpg,.jpeg"
-          multiple="false"
+          multiple="true"
           validation="required"
         />
       </div>
