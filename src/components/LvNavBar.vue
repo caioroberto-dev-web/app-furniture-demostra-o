@@ -1,4 +1,6 @@
 <script setup>
+import { defineComponent } from "vue";
+
 //Components
 import LvButton from "./LvButton.vue";
 import LvImage from "./LvImage.vue";
@@ -10,6 +12,10 @@ import { useFurnitureStore } from "../store/useFurnitureStore";
 
 //Services
 import { furnitureServices } from "../services/furnitureServices";
+
+defineComponent({
+  name: "LvNavBar",
+});
 
 const userStore = useUserStore();
 
@@ -42,11 +48,11 @@ const emitCartClick = () => {
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <lv-router-link
+            <LvRouterLink
               :classBtn="'nav-link'"
               :to="'/'"
               :title="'Inicial'"
-            ></lv-router-link>
+            ></LvRouterLink>
           </li>
           <template v-if="userStore.user.loggedIn !== false">
             <li class="nav-item">
@@ -54,7 +60,7 @@ const emitCartClick = () => {
                 class="nav-link"
                 :to="/user-panel/ + userStore.user.idUsuario"
               >
-                <lv-image
+                <LvImage
                   class="img-profile rounded"
                   :src="userStore.user.image"
                   :alt="userStore.user.nome"
@@ -63,11 +69,11 @@ const emitCartClick = () => {
               </router-link>
             </li>
             <li class="nav-item">
-              <lv-button
+              <LvButton
                 :classBtn="'btn-danger btn-sm mt-1'"
                 @click="userStore.logout"
                 :title="'Logout'"
-              ></lv-button>
+              ></LvButton>
             </li>
             <li class="nav-item mt-lg-0 mt-2">
               <p class="position-absolute productsInCart px-1">
@@ -78,20 +84,20 @@ const emitCartClick = () => {
           </template>
           <template v-else>
             <li class="nav-item">
-              <lv-router-link
+              <LvRouterLink
                 :classBtn="'nav-link'"
                 :to="'/register'"
                 :title="'Registro'"
               >
-              </lv-router-link>
+              </LvRouterLink>
             </li>
             <li class="nav-item">
-              <lv-router-link
+              <LvRouterLink
                 :classBtn="'nav-link'"
                 :to="'/login'"
                 :title="'Login'"
               >
-              </lv-router-link>
+              </LvRouterLink>
             </li>
           </template>
         </ul>

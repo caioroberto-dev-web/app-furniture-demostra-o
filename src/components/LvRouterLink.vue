@@ -1,4 +1,6 @@
 <script setup>
+import { defineComponent } from "vue";
+
 defineProps({
   to: {
     required: true,
@@ -13,6 +15,11 @@ defineProps({
     classBtn: String,
   },
 });
+
+defineComponent({
+  name: "LvRouterLink",
+});
+
 </script>
 
 <template>

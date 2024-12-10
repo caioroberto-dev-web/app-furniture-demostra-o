@@ -1,4 +1,5 @@
 <script setup>
+import { defineComponent } from "vue";
 import { useToast } from "vue-toast-notification";
 import { reset } from "@formkit/core";
 import { useRouter } from "vue-router";
@@ -8,6 +9,10 @@ import { userServices } from "../services/userServices";
 
 //Components
 import LvButton from "../components/LvButton.vue";
+
+defineComponent({
+  name: "LvRegister",
+});
 
 const $toast = useToast();
 
@@ -50,13 +55,7 @@ const handleSubmit = async (field) => {
 </script>
 
 <template>
-  <FormKit
-    @submit="handleSubmit"
-    id="myForm"
-    type="form"
-    :actions="false"
-    #default="{ value }"
-  >
+  <FormKit @submit="handleSubmit" id="myForm" type="form" :actions="false">
     <h1 class="text-center text-white my-5">Registro</h1>
     <div class="row gy-3 m-auto container-form">
       <div class="col-lg-6">
@@ -94,9 +93,9 @@ const handleSubmit = async (field) => {
           type="tel"
           name="telefone"
           label="Telefone"
-          validation="required|matches:/^[0-9]{2}-[0-9]{4}-[0-9]{4}$/"
+          validation="required|matches:/^[0-9]{2}[0-9]{4}[0-9]{4}$/"
           :validation-messages="{
-            matches: 'O número de telefone deve estar no formato xxx-xxx-xxxx',
+            matches: 'O número de telefone deve estar no formato 9988889999',
           }"
         />
       </div>
@@ -111,7 +110,7 @@ const handleSubmit = async (field) => {
         />
       </div>
       <div class="col-lg-12">
-        <lv-button :classBtn="'btn-primary'" title="Cadastrar"></lv-button>
+        <LvButton :classBtn="'btn-primary'" title="Cadastrar"></LvButton>
       </div>
     </div>
   </FormKit>

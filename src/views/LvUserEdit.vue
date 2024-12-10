@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useToast } from "vue-toast-notification";
 
@@ -12,6 +12,10 @@ import { userServices } from "../services/userServices";
 
 //Store
 import { useUserStore } from "../store/useUserStore";
+
+defineComponent({
+  name: "LvUserEdit",
+});
 
 const route = useRoute();
 
@@ -73,13 +77,7 @@ const handleSubmit = async () => {
       </div>
     </div>
     <div v-else>
-      <FormKit
-        @submit.prevent=""
-        id="myForm"
-        type="form"
-        :actions="false"
-        #default="{ value }"
-      >
+      <FormKit @submit="" id="myForm" type="form" :actions="false">
         <h1 class="text-center text-white my-5">Edição</h1>
         <div class="row gy-3 m-auto container-form">
           <div class="col-lg-6">
@@ -127,7 +125,7 @@ const handleSubmit = async () => {
               name="telefone"
               v-model="userEdit.telefone"
               label="Telefone"
-              validation="required|matches:/^[0-9]{2}-[0-9]{4}-[0-9]{4}$/"
+              validation="required|matches:/^[0-9]{2}[0-9]{4}[0-9]{4}$/"
               :validation-messages="{
                 matches:
                   'O número de telefone deve estar no formato xxx-xxx-xxxx',
@@ -150,19 +148,19 @@ const handleSubmit = async () => {
               :to="'/user-panel/' + userStore.user.idUsuario"
               >Cancelar</router-link
             >
-            <lv-button
+            <LvButton
               :classBtn="'btn-primary'"
               title="Salvar"
               data-bs-toggle="modal"
               data-bs-target="#staticBackdrop"
-            ></lv-button>
+            ></LvButton>
           </div>
         </div>
-        <lv-modal-confirm
+        <LvModalConfirm
           :title="'Editar perfil'"
           :bodyContent="'Deseja confirmar as alterações?'"
           :event="handleSubmit"
-        ></lv-modal-confirm>
+        ></LvModalConfirm>
       </FormKit>
     </div>
   </div>

@@ -1,9 +1,13 @@
 <script setup>
-import { ref, watch, computed } from "vue";
+import { ref, watch, computed, defineComponent } from "vue";
 
 //Store
 import { useFurnitureStore } from "../store/useFurnitureStore";
 import { useUserStore } from "../store/useUserStore";
+
+defineComponent({
+  name: "LvOffCanvas",
+});
 
 defineProps({
   isOffCanvasVisible: Boolean,
@@ -24,10 +28,10 @@ const userStore = useUserStore();
 const total = ref(0);
 
 const cartItems = computed(() => {
-  total.value = 0
+  total.value = 0;
   furnitureStore.cart.bag.forEach((item) => {
-    console.log(total.value += parseFloat(item.preco))
-  })
+    console.log((total.value += parseFloat(item.preco)));
+  });
   return furnitureStore.cart.bag;
 });
 

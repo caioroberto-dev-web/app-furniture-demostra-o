@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 import { useToast } from "vue-toast-notification";
 import Pagination from "v-pagination-3";
 
@@ -9,6 +9,10 @@ import { furnitureServices } from "../services/furnitureServices";
 //Components
 import LvImage from "./LvImage.vue";
 import LvRouterLink from "./LvRouterLink.vue";
+
+defineComponent({
+  name: "LvList",
+});
 
 const furniture = ref();
 
@@ -65,32 +69,36 @@ const getPagedItems = (currentPage) => {
       <div class="card-header text-center bg-transparent border-0">
         <h2 class="fs-6">{{ item.nomeProduto }}</h2>
       </div>
-      <lv-image class="img-fluid" :src="item.image[0].url" :alt="item.nomeProduto" />
+      <LvImage
+        class="img-fluid"
+        :src="item.image[0].url"
+        :alt="item.nomeProduto"
+      />
       <div class="card-body">
         <p class="card-text text-center fs-6">R$ {{ item.preco }},00</p>
       </div>
-      <lv-router-link
+      <LvRouterLink
         v-if="item.nomeComprador !== null && item.situacao !== false"
         @click="isNegotiating"
         :title="'Em negociação'"
         :classBtn="'btn-warning text-white'"
         :to="'/'"
-      ></lv-router-link>
-      <lv-router-link
+      ></LvRouterLink>
+      <LvRouterLink
         v-else-if="item.nomeComprador === null && item.situacao !== false"
         :title="'Compre agora'"
         :classBtn="'btn-success text-white'"
         :to="'/furniture-details/' + item.idMovel"
-      ></lv-router-link>
-      <lv-router-link
+      ></LvRouterLink>
+      <LvRouterLink
         v-else
         @click="isSold"
         :title="'Vendido!'"
         :classBtn="'btn-danger text-white'"
         :to="'/'"
-      ></lv-router-link>
+      ></LvRouterLink>
     </div>
-    <pagination v-model="page" :records="totalPages" :per-page="10" />
+    <Pagination v-model="page" :records="totalPages" :per-page="10" />
   </div>
 </template>
 

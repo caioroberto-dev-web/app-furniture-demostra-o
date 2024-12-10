@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useToast } from "vue-toast-notification";
 
@@ -12,6 +12,10 @@ import { furnitureServices } from "../services/furnitureServices";
 
 //Store
 import { useUserStore } from "../store/useUserStore";
+
+defineComponent({
+  name: "LvEditFurniture",
+});
 
 const route = useRoute();
 
@@ -76,7 +80,7 @@ const handleSubmit = async () => {
     </div>
     <FormKit
       v-else
-      @submit.prevent=""
+      @submit=""
       type="form"
       :actions="false"
       #default="{ value }"
@@ -156,19 +160,19 @@ const handleSubmit = async () => {
             :to="'/user-panel/' + userStore.user.idUsuario"
             >Cancelar</router-link
           >
-          <lv-button
+          <LvButton
             :classBtn="'btn-primary'"
             :title="'Salvar'"
             data-bs-toggle="modal"
             data-bs-target="#staticBackdrop"
-          ></lv-button>
+          ></LvButton>
         </div>
       </div>
-      <lv-modal-confirm
+      <LvModalConfirm
         :title="'Editar móvel'"
         :bodyContent="'Deseja confirmar as alterações?'"
         :event="handleSubmit"
-      ></lv-modal-confirm>
+      ></LvModalConfirm>
     </FormKit>
   </div>
 </template>

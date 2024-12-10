@@ -1,4 +1,6 @@
 <script setup>
+import { defineComponent } from "vue";
+
 defineProps({
   title: {
     required: true,
@@ -12,6 +14,10 @@ defineProps({
     required: true,
     event: Function,
   },
+});
+
+defineComponent({
+  name: "LvModalDeleteConfirm",
 });
 </script>
 
@@ -40,11 +46,7 @@ defineProps({
         </div>
         <div class="modal-body">{{ bodyContent }}</div>
         <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-danger"
-            data-bs-dismiss="modal"
-          >
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
             Cancelar
           </button>
           <button

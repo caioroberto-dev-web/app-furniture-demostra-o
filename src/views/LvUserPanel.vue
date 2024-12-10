@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import { useToast } from "vue-toast-notification";
 
@@ -18,6 +18,10 @@ import { furnitureServices } from "../services/furnitureServices";
 //Store
 import { useUserStore } from "../store/useUserStore";
 
+defineComponent({
+  name: "LvUserPanel",
+});
+
 const route = useRoute();
 
 const user = ref();
@@ -26,7 +30,7 @@ const myFurniture = ref();
 
 const idMovel = ref();
 
-const purchaseFurniture = ref([]);
+const purchaseFurniture = ref();
 
 const userStore = useUserStore();
 
@@ -128,22 +132,22 @@ const cancelSale = async () => {
     <template v-else>
       <div class="col-lg-4 col-12">
         <h2>{{ user.nome }}</h2>
-        <lv-image class="img-profile" :src="user.image" :alt="user.nome">
-        </lv-image>
+        <LvImage class="img-profile" :src="user.image" :alt="user.nome">
+        </LvImage>
         <p>E-mail: {{ user.email }}</p>
         <p>Contato: {{ user.telefone }}</p>
 
-        <lv-router-link
+        <LvRouterLink
           :to="/user-edit/ + route.params.id"
           :title="'Editar perfil'"
           :classBtn="'btn-sm btn-primary me-1'"
-        ></lv-router-link>
-        <lv-router-link
+        ></LvRouterLink>
+        <LvRouterLink
           to="/register-furniture"
           :title="'Registrar móvel'"
           :classBtn="'btn-sm btn-primary'"
         >
-        </lv-router-link>
+        </LvRouterLink>
       </div>
       <div class="col-lg-8 col-12 mt-lg-0 mt-3">
         <h2 class="text-center">Móveis registrados</h2>
@@ -159,7 +163,7 @@ const cancelSale = async () => {
             <span class="d-block">
               {{ item.nomeProduto }}
             </span>
-            <lv-image
+            <LvImage
               class="myFurniture d-inline"
               :src="item.image[0].url"
               :alt="item.nomeProduto"
@@ -192,53 +196,53 @@ const cancelSale = async () => {
               ></a>
             </p>
             <p>
-              <lv-router-link
+              <LvRouterLink
                 :classBtn="'btn-sm btn-primary me-1'"
                 :to="/edit-furniture/ + item.idMovel"
                 :title="'Editar'"
               >
-              </lv-router-link>
-              <lv-button
+              </LvRouterLink>
+              <LvButton
                 :classBtn="'btn-sm btn-danger me-1'"
                 :title="'Deletar'"
                 data-bs-toggle="modal"
                 data-bs-target="#staticBackdrop2"
                 @click="idMovel = item.idMovel"
               >
-              </lv-button>
+              </LvButton>
               <span
                 v-show="item.situacao === true && item.nomeComprador !== null"
               >
-                <lv-button
+                <LvButton
                   :classBtn="'btn-sm btn-success me-1'"
                   :title="'Concluir venda'"
                   data-bs-toggle="modal"
                   data-bs-target="#staticBackdrop4"
                   @click="idMovel = item.idMovel"
                 >
-                </lv-button>
-                <lv-button
+                </LvButton>
+                <LvButton
                   :classBtn="'btn-sm btn-danger me-1'"
                   :title="'Cancelar'"
                   data-bs-toggle="modal"
                   data-bs-target="#staticBackdrop3"
                   @click="idMovel = item.idMovel"
                 >
-                </lv-button>
+                </LvButton>
               </span>
-              <lv-modal-delete-confirm
+              <LvModalDeleteConfirm
                 class="text-dark"
                 :title="'Deletar este móvel?'"
                 :bodyContent="'Deseja confirmar a exclusão?'"
                 :event="deleteFurtinure"
               />
-              <lv-modal-cancel-confirm
+              <LvModalCancelConfirm
                 class="text-dark"
                 :title="'Cancelar a venda deste móvel?'"
                 :bodyContent="'Deseja confirmar o cancelamento?'"
                 :event="cancelSale"
               />
-              <lv-modal-confirm-purchase
+              <LvModalConfirmPurchase
                 class="text-dark"
                 :title="'Confirmar a venda deste móvel?'"
                 :bodyContent="'Deseja confirmar a venda?'"
@@ -250,7 +254,7 @@ const cancelSale = async () => {
       </div>
       <div class="offset-lg-4 col-lg-8 col-12 my-lg-0 my-3">
         <h2 class="text-center">Móveis desejados</h2>
-        <div v-if="!purchaseFurniture.length">
+        <div v-if="purchaseFurniture <= 0">
           <p class="text-center my-3">Não possui nenhum móvel com interesse</p>
         </div>
         <ul v-else>
@@ -259,9 +263,9 @@ const cancelSale = async () => {
             :key="item.id"
             class="container-purchase-furniture"
           >
-            <lv-image
+            <LvImage
               class="purchase-img"
-              :src="Image[0].url"
+              :src="item.image[0].url"
               :alt="item.nomeProduto"
             />
             <p>
@@ -289,12 +293,12 @@ const cancelSale = async () => {
                 <i class="bi bi-whatsapp ms-1 text-success"></i
               ></a>
             </p>
-            <lv-router-link
+            <LvRouterLink
               :classBtn="'btn-sm btn-primary mb-3'"
               :to="/furniture-details/ + item.idMovel"
               :title="'Detalhes'"
             >
-            </lv-router-link>
+            </LvRouterLink>
           </li>
         </ul>
       </div>

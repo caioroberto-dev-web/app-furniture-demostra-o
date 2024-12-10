@@ -1,4 +1,5 @@
 <script setup>
+import { defineComponent } from "vue";
 import { useToast } from "vue-toast-notification";
 import { useRouter } from "vue-router";
 
@@ -10,6 +11,10 @@ import { furnitureServices } from "../services/furnitureServices";
 
 //Store
 import { useUserStore } from "../store/useUserStore";
+
+defineComponent({
+  name: "LvRegisterFurniture",
+});
 
 const router = useRouter();
 
@@ -114,7 +119,7 @@ const handleSubmit = async (field) => {
           :to="'/user-panel/' + userStore.user.idUsuario"
           >Cancelar</router-link
         >
-        <lv-button :classBtn="'btn-primary'" :title="'Registrar'"></lv-button>
+        <LvButton :classBtn="'btn-primary'" :title="'Registrar'"></LvButton>
       </div>
     </div>
   </FormKit>

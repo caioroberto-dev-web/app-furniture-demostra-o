@@ -1,4 +1,6 @@
 <script setup>
+import { defineComponent } from "vue";
+
 defineProps({
   event: {
     event: Function,
@@ -11,6 +13,10 @@ defineProps({
     required: true,
     classBtn: String,
   },
+});
+
+defineComponent({
+  name: "LvButton",
 });
 </script>
 

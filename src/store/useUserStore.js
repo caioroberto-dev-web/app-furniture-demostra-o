@@ -31,8 +31,7 @@ export const useUserStore = defineStore("user", {
 
     async checaUsuario() {
       const res = await userServices.getUserByToken();
-      console.log(res);
-      this.user = res.data;
+      this.user.image = res.data.image
     },
   },
 });

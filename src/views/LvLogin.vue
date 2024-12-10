@@ -1,4 +1,5 @@
 <script setup>
+import { defineComponent } from "vue";
 import { useToast } from "vue-toast-notification";
 import { useRouter } from "vue-router";
 
@@ -11,6 +12,10 @@ import { userServices } from "../services/userServices";
 //Store
 import { useUserStore } from "../store/useUserStore";
 import { useFurnitureStore } from "../store/useFurnitureStore";
+
+defineComponent({
+  name: "LvLogin",
+});
 
 const router = useRouter();
 
@@ -42,12 +47,7 @@ const handleSubmit = async (field) => {
 </script>
 
 <template>
-  <FormKit
-    @submit="handleSubmit"
-    type="form"
-    :actions="false"
-    #default="{ value }"
-  >
+  <FormKit @submit="handleSubmit" type="form" :actions="false">
     <h1 class="text-center text-white my-5">Logar</h1>
     <div class="col-lg-6 m-auto container-form">
       <div class="row col-lg-6 gy-3 m-auto">
@@ -64,7 +64,7 @@ const handleSubmit = async (field) => {
           validation="required"
         />
         <div class="col-lg-6">
-          <lv-button :classBtn="'btn-primary'" title="Logar"></lv-button>
+          <LvButton :classBtn="'btn-primary'" title="Logar"></LvButton>
         </div>
       </div>
     </div>

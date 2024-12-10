@@ -1,10 +1,14 @@
 <script setup>
-import { ref } from "vue";
+import { defineComponent, ref } from "vue";
 
 //Components
 import LvNavBar from "./components/LvNavBar.vue";
 import LvOffCanvas from "./components/LvOffCanvas.vue";
 import LvFooter from "./components/LvFooter.vue";
+
+defineComponent({
+  name: "App"
+})
 
 const isOffCanvasVisible = ref(false);
 

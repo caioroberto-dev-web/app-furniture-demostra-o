@@ -1,5 +1,6 @@
 <script setup>
-import { ref } from "vue";
+import { defineComponent, ref } from "vue";
+
 defineProps({
   srcImg: {
     required: true,
@@ -11,6 +12,10 @@ defineProps({
     altImg: String,
     default: "",
   },
+});
+
+defineComponent({
+  name: "LvCarouselFurnitureImg",
 });
 
 const activeIndex = ref(0);
@@ -63,7 +68,11 @@ const activeIndex = ref(0);
         :class="{ active: index === activeIndex }"
         class="carousel-item"
       >
-        <img :src="item.url" class="img-carousel img-fluid" :alt="item.filename" />
+        <img
+          :src="item.url"
+          class="img-carousel img-fluid"
+          :alt="item.filename"
+        />
       </div>
     </div>
     <button

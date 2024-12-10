@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import { useToast } from "vue-toast-notification";
 
@@ -14,6 +14,10 @@ import { furnitureServices } from "../services/furnitureServices";
 //Store
 import { useUserStore } from "../store/useUserStore";
 import { useFurnitureStore } from "../store/useFurnitureStore";
+
+defineComponent({
+  name: "LvFurnitureDetails",
+});
 
 const route = useRoute();
 
@@ -76,11 +80,11 @@ const isButtonDisabled = () => {
     </div>
     <div v-else class="row container-furniture mt-5">
       <div class="col-lg-6 container-img-furniture">
-        <lv-image
+        <LvImage
           class="img-furtinure"
           :src="furnitureDetails.image[0].url"
           :alt="furnitureDetails.nomeProduto"
-        ></lv-image>
+        ></LvImage>
       </div>
       <div class="row col-lg-6">
         <h2 class="mt-lg-0 mt-3">{{ furnitureDetails.nomeProduto }}</h2>
@@ -102,12 +106,12 @@ const isButtonDisabled = () => {
           >
             Desejo comprar
           </button>
-          <lv-modal-confirm
+          <LvModalConfirm
             :title="'Comprar este móvel'"
             :bodyContent="'Deseja confirmar o interesse?'"
             class="text-dark"
             :event="iWantBuyFurniture"
-          ></lv-modal-confirm>
+          ></LvModalConfirm>
         </template>
         <template
           v-else-if="
@@ -135,10 +139,10 @@ const isButtonDisabled = () => {
         </template>
       </div>
       <hr class="mt-5" />
-      <lv-carousel-furniture-img
+      <LvCarouselFurnitureImg
         :srcImg="furnitureDetails.image"
         :altImg="furnitureDetails.nomeProduto"
-      ></lv-carousel-furniture-img>
+      ></LvCarouselFurnitureImg>
       <hr class="mt-5" />
       <h3 class="text-center mt-5">Descricão</h3>
       <p class="my-3">{{ furnitureDetails.descricao }}</p>
