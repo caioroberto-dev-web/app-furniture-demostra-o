@@ -98,7 +98,7 @@ const activeIndex = ref(0);
 
 <style scoped>
 .img-carousel {
-  height: 576px;
+  height: 70vh;
   margin: auto;
 }
 
@@ -115,14 +115,8 @@ const activeIndex = ref(0);
 }
 
 @media (max-width: 992px) {
-  .container-img-furniture {
-    width: 300px;
-    margin: auto;
-  }
-
   .img-carousel {
-    height: 376px;
-    width: 576px;
+    max-height: 50vh;
     margin: auto;
   }
 }

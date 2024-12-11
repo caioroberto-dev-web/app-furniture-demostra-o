@@ -86,7 +86,7 @@ const isButtonDisabled = () => {
           :alt="furnitureDetails.nomeProduto"
         ></LvImage>
       </div>
-      <div class="row col-lg-6">
+      <div class="col-lg-6">
         <h2 class="mt-lg-0 mt-3">{{ furnitureDetails.nomeProduto }}</h2>
         <p class="fs-1 price">R$ {{ furnitureDetails.preco }}</p>
         <p class="fs-6">Condição - {{ furnitureDetails.condicao }}</p>
@@ -167,6 +167,12 @@ const isButtonDisabled = () => {
 @media (max-width: 992px) {
   .container-img-furniture {
     width: 300px;
+    margin: auto;
+  }
+
+  .img-furtinure {
+    max-width: 70vw;
+    border-radius: 15px;
     margin: auto;
   }
 }
