@@ -137,17 +137,20 @@ const cancelSale = async () => {
         <p>E-mail: {{ user.email }}</p>
         <p>Contato: {{ user.telefone }}</p>
 
-        <LvRouterLink
-          :to="/user-edit/ + route.params.id"
-          :title="'Editar perfil'"
-          :classBtn="'btn-sm btn-primary me-1'"
-        ></LvRouterLink>
-        <LvRouterLink
-          to="/register-furniture"
-          :title="'Registrar móvel'"
-          :classBtn="'btn-sm btn-primary'"
-        >
-        </LvRouterLink>
+        <div class="row d-inline container-button">
+          <LvRouterLink
+            :to="/user-edit/ + route.params.id"
+            :title="'Editar perfil'"
+            :classBtn="'btn-sm btn-primary me-lg-1 me-0 my-lg-0 my-3 col-lg-6 col-12'"
+          ></LvRouterLink>
+
+          <LvRouterLink
+            to="/register-furniture"
+            :title="'Registrar móvel'"
+            :classBtn="'btn-sm btn-primary col-lg-6 col-12'"
+          >
+          </LvRouterLink>
+        </div>
       </div>
       <div class="col-lg-8 col-12 mt-lg-0 mt-3">
         <h2 class="text-center">Móveis registrados</h2>
@@ -339,5 +342,11 @@ li {
   padding: 15px;
   margin: 15px 0;
   border-radius: 15px;
+}
+
+@media (max-width: 576px) {
+  .container-button {
+    margin: 0;
+  }
 }
 </style>
