@@ -10,7 +10,7 @@ defineComponent({
 </script>
 
 <template>
-  <div>
+  <div class="container-offer">
     <div class="container-search">
       <FormKit type="search" label="Buscar" validation="required" />
       <button class="btn btn-sm btn-primary d-block mt-3 ms-auto" type="button">
@@ -22,4 +22,11 @@ defineComponent({
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+
+@media (max-width: 576px) {
+  .container-offer {
+    width: 100%;
+  }
+}
+</style>

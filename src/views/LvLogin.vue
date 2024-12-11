@@ -85,4 +85,11 @@ const handleSubmit = async (field) => {
     width: 447px;
   }
 }
+
+@media (max-width: 576px) {
+  .container-form {
+    width: 100%;
+  }
+}
+
 </style>
