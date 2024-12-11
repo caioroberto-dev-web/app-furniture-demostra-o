@@ -40,8 +40,16 @@ body {
 }
 
 @media (max-width: 576px) {
+  /* Search */
+  .container-search {
+    color: #fefefe;
+    width: 300px;
+    margin: 15px auto;
+  }
+
   body {
-    min-height: 750px;
+    min-height: 100vh;
+    min-width: 576px;
   }
 }
 
