@@ -141,13 +141,13 @@ const cancelSale = async () => {
           <LvRouterLink
             :to="/user-edit/ + route.params.id"
             :title="'Editar perfil'"
-            :classBtn="'btn-sm btn-primary me-lg-1 me-0 my-lg-0 my-3 col-lg-6 col-12'"
+            :classBtn="'btn-sm btn-primary me-1 my-lg-0 my-3 col-sm-auto col-12'"
           ></LvRouterLink>
 
           <LvRouterLink
             to="/register-furniture"
             :title="'Registrar móvel'"
-            :classBtn="'btn-sm btn-primary col-lg-6 col-12'"
+            :classBtn="'btn-sm btn-primary col-sm-auto col-12'"
           >
           </LvRouterLink>
         </div>
@@ -157,7 +157,7 @@ const cancelSale = async () => {
         <p v-if="myFurniture <= 0" class="text-center my-3">
           Não possui nenhum móvel registrado a venda.
         </p>
-        <ul v-else>
+        <ul v-else class="p-0">
           <li
             v-for="item in myFurniture"
             :key="item.id"
@@ -338,10 +338,17 @@ li {
 
 .container-purchase-furniture,
 .container-furniture-registered {
+  width: 50vw;
   background-color: #260801;
   padding: 15px;
   margin: 15px 0;
   border-radius: 15px;
+}
+
+@media (max-width: 992px) {
+  .container-button {
+    margin: 0;
+  }
 }
 
 @media (max-width: 576px) {
@@ -349,8 +356,17 @@ li {
     margin: 0;
   }
 
-  .btn-primary {
+  .container-purchase-furniture,
+  .container-furniture-registered {
+    width: 60vw;
+    margin: 15px auto;
+  }
+
+  .btn-primary,
+  .btn-success,
+  .btn-danger {
     width: 100%;
+    margin: 7px auto;
   }
 }
 </style>

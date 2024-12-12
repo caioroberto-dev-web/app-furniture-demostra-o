@@ -176,4 +176,13 @@ const isButtonDisabled = () => {
     margin: auto;
   }
 }
+
+@media (max-width: 576px) {
+  .btn-warning,
+  .btn-success,
+  .btn-danger {
+    width: 100%;
+    margin: auto 0;
+  }
+}
 </style>
