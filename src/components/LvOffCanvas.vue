@@ -102,4 +102,10 @@ ul li {
   background-color: #f29d52;
   color: #fefefe;
 }
+
+@media (max-width: 576px) {
+  .offcanvas {
+    --bs-offcanvas-width: 80%;
+  }
+}
 </style>

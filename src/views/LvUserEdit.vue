@@ -177,7 +177,15 @@ const handleSubmit = async () => {
 
 @media (max-width: 992px) {
   .container-form {
-    width: 447px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .btn-danger,
+  .btn-primary {
+    width: 100%;
+    margin: 7px 0;
   }
 }
 </style>

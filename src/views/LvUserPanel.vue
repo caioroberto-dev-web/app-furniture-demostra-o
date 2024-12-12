@@ -348,5 +348,9 @@ li {
   .container-button {
     margin: 0;
   }
+
+  .btn-primary {
+    width: 100%;
+  }
 }
 </style>

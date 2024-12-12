@@ -7,8 +7,8 @@ import LvOffCanvas from "./components/LvOffCanvas.vue";
 import LvFooter from "./components/LvFooter.vue";
 
 defineComponent({
-  name: "App"
-})
+  name: "App",
+});
 
 const isOffCanvasVisible = ref(false);
 
@@ -18,7 +18,7 @@ const toggleOffCanvas = () => {
 </script>
 
 <template>
-  <div>
+  <div class="main">
     <lv-nav-bar @emitCartClicked="toggleOffCanvas"></lv-nav-bar>
     <lv-off-canvas
       :isOffCanvasVisible="isOffCanvasVisible"

@@ -90,6 +90,10 @@ const handleSubmit = async (field) => {
   .container-form {
     width: 100%;
   }
+
+  .btn-primary {
+    width: 100%;
+  }
 }
 
 </style>
